@@ -53,7 +53,7 @@ class textAnalyzer{
             ifstream file("../data/sample.txt");
             
             if (!file.is_open()) {
-                cout << "Error opening file" << endl;
+                cout << "Error opening file." << endl;
             }
             string line;
             string word;
