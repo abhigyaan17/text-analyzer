@@ -1,0 +1,4 @@
+Hello, this is a sample text file
+Welcome to C++ file handling
+this file is used for reading practice
+C++ is powerful so keep practicing
