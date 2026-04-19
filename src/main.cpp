@@ -95,13 +95,51 @@ class textAnalyzer{
             cout<<"Total Unique words : "<<uniq_count<<endl;
             file.close();
         }
+
+        void removeDuplicate(){
+            ifstream file("../data/sample.txt");
+            ofstream newFile;
+            newFile.open("../output/cleaned.txt");
+
+            
+            if(!file.is_open()) {
+                cout << "Error opening file." << endl;
+            }
+            string line;
+            string word;
+
+            while (getline(file, line)) {
+                istringstream iss(line);
+                while(iss>>word){
+                    mp[word]++;
+                }
+            }
+            file.clear();
+            file.seekg(0);
+            
+            while (getline(file, line)) {
+                istringstream iss(line);
+                while(iss>>word){
+                    if(mp[word]>1){
+                        continue;
+                    }
+                    else{
+                        newFile<<word<<" ";
+                    }
+                }
+                newFile<<""<<endl;
+            }
+            file.close();
+            newFile.close();
+        }
 };
 
 int main() {
     textAnalyzer obj;
-    // cout<<"Total Words : "<<obj.totalWords()<<endl;
-    // obj.wordsFreq();
-    // obj.maxFreq();
+    cout<<"Total Words : "<<obj.totalWords()<<endl;
+    obj.wordsFreq();
+    obj.maxFreq();
     obj.uniqueCount();
+    obj.removeDuplicate();
     return 0;
 }
